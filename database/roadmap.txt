@@ -1,0 +1,4 @@
+1: Decide if the open function to be used in storage.c should close after a read/write is done or keep it open for the program's lifetime for less CPU cycles wasted?
+-If we let it close after a read/write,  it will use more CPU cycles, but in return, is safer and it shouldn't cause a memory leak.
+-If we kep the databse file open after a read/write, you wouldnt have to close it, so that would use less CPU cycles in theory, but if the program ends or the program crashes, the file isnt closed and thats a memory leak. In addition to that, checking if the file is already open will take up CPU cycles..
+SOLVED -- The file closes after a read/write.
